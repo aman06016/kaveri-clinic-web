@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "start": "serve dist -s -p $PORT",
     "lint": "eslint .",
     "preview": "vite preview",
     "types": "npx supabase gen types typescript --project-id nrfpxbqodjrevenvmlly > src/lib/database.types.ts"
@@ -14,7 +15,8 @@
     "@supabase/supabase-js": "^2.49.0",
     "lucide-react": "^0.468.0",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "serve": "^14.2.6"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

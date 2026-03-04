@@ -3,12 +3,57 @@
 @tailwind utilities;
 
 :root {
-  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family: 'DM Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   min-width: 320px;
-  background: radial-gradient(circle at 10% 10%, #e7f5f5 0%, #f7fbfb 45%, #ffffff 100%);
-  color: #0f172a;
+  background: #060d14;
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #060d14;
+}
+::-webkit-scrollbar-thumb {
+  background: #0D6E6E;
+  border-radius: 4px;
+}
+
+@layer utilities {
+  .text-gradient-white {
+    background: linear-gradient(135deg, #fff 40%, rgba(255,255,255,0.6));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .text-gradient-teal {
+    background: linear-gradient(135deg, #0D6E6E, #7ae8e0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .text-gradient-stat {
+    background: linear-gradient(135deg, #fff, #7ae8e0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .bg-glass {
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .bg-glass-strong {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255,255,255,0.15);
+  }
 }

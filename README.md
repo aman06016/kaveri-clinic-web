@@ -1,6 +1,6 @@
-# Kaveri Web Boilerplate
+# Kaveri Web (Firebase)
 
-React + Tailwind + Supabase starter for the clinic website.
+React + Vite frontend connected to Firebase Firestore.
 
 ## 1) Install and run
 
@@ -9,26 +9,36 @@ npm install
 npm run dev
 ```
 
-## 2) Supabase setup
+## 2) Firebase project setup
 
-1. Create a Supabase project (free tier).
-2. In SQL Editor, run `supabase/schema.sql`.
-3. Copy `.env.example` to `.env.local` and fill:
+1. Create a Firebase project in `console.firebase.google.com`.
+2. Add a Web app in that project and copy its config values.
+3. Copy `.env.example` to `.env.local` and fill all `VITE_FIREBASE_*` keys.
+4. In Firebase Console, enable Firestore Database.
+
+## 3) Firebase CLI setup (one-time per machine)
 
 ```bash
-VITE_SUPABASE_URL=...
-VITE_SUPABASE_ANON_KEY=...
+npx firebase-tools login
 ```
 
-## 3) What is included
+Set your real project id in `.firebaserc` (`projects.default`), then deploy:
 
-- Tailwind configured in `tailwind.config.js` and `src/index.css`
-- Supabase client in `src/lib/supabase.js`
-- Booking data helpers in `src/services/bookings.js`
-- Starter app UI in `src/App.jsx`
+```bash
+npm run firebase:deploy
+```
 
-## 4) Next build steps
+Useful deploy commands:
 
-- Add pages/components for Home, Services, Booking, Contact
-- Connect booking form to `createBooking()`
-- Add slot calendar using `listSlots()`
+```bash
+npm run firebase:deploy:hosting
+npm run firebase:deploy:firestore
+```
+
+## 4) What is included
+
+- Firebase client setup: `src/lib/firebase.js`
+- Firestore rules: `firestore.rules`
+- Firestore indexes: `firestore.indexes.json`
+- Firebase hosting config: `firebase.json`
+- Firebase project alias: `.firebaserc`

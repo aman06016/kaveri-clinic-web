@@ -21,7 +21,8 @@ import {
   Calendar, User, Menu, X, Shield, BarChart3, Settings,
   ClipboardList, Trash2, MessageCircle, Copy, Check,
   AlertCircle, Loader2, ArrowLeft, LogOut, Lock,
-  Globe, Search, Filter, Plus, Minus, Ban, Info
+  Globe, Search, Filter, Plus, Minus, Ban, Info,
+  Download, ChevronLeft, ChevronRight
 } from "lucide-react";
 
 /* ══════════════════════════════════════════
@@ -34,24 +35,24 @@ const ALL_SLOTS = [
 ];
 
 const SERVICES = [
-  { icon: "🔬", name: "3D/4D Sonography", desc: "Detailed baby images & real-time movement views for pregnancy care", prep: "Drink water regularly 1–2 days before. Moderately full bladder. Wear loose two-piece clothing. Avoid heavy gas-forming meals before scan.", color: "from-teal-600/70 to-teal-900/80", duration: "20–45 min" },
-  { icon: "🤰", name: "Anomaly Scan", desc: "Detailed second-trimester scan checking baby organs head to toe (18–22 weeks)", prep: "Follow instructions on bladder filling (often partially full). Bring previous reports. Wear comfortable clothing.", color: "from-teal-500/50 to-dark-50/80", duration: "30–60 min" },
-  { icon: "📏", name: "NT/NB Scan", desc: "First trimester screening for chromosomal risk markers (11–14 weeks)", prep: "Usually no fasting. Full bladder may be advised depending on gestational age. Carry dating scan records.", color: "from-purple-700/40 to-dark-50/80", duration: "20–30 min" },
-  { icon: "💓", name: "Pregnancy Doppler Scan", desc: "Blood flow assessment between mother, placenta & baby", prep: "No fasting in most cases. Wear comfortable clothing and carry prior ultrasound records.", color: "from-teal-700/50 to-dark-50/80", duration: "15–30 min" },
-  { icon: "☢️", name: "X-Ray", desc: "Quick digital X-Ray for bones, chest & emergency assessments", prep: "Remove metal objects (jewelry, belts). Wear simple clothing. Inform staff if pregnant or possibly pregnant.", color: "from-orange-600/50 to-dark-50/80", duration: "5–15 min" },
-  { icon: "🧪", name: "Blood Tests", desc: "Screen organ function, infection, sugar, thyroid, lipids & more", prep: "Fasting 8–12 hours for lipid/glucose profiles (as advised). Drink plain water. Avoid alcohol/heavy meals before test.", color: "from-emerald-600/50 to-dark-50/80", duration: "5–10 min" },
-  { icon: "🧫", name: "Urine Test", desc: "Simple lab test for kidney health, infection, sugar & hydration clues", prep: "Prefer clean-catch midstream sample. Avoid contamination. Share current medicines with lab/doctor.", color: "from-blue-600/50 to-dark-50/80", duration: "5 min" },
+  { icon: "🔬", name: "3D/4D Sonography", nameHi: "3D/4D सोनोग्राफी", desc: "Detailed baby images & real-time movement views for pregnancy care", prep: "Drink water regularly 1–2 days before. Moderately full bladder. Wear loose two-piece clothing. Avoid heavy gas-forming meals before scan.", color: "from-teal-600/70 to-teal-900/80", duration: "20–45 min" },
+  { icon: "🤰", name: "Anomaly Scan", nameHi: "एनॉमली स्कैन", desc: "Detailed second-trimester scan checking baby organs head to toe (18–22 weeks)", prep: "Follow instructions on bladder filling (often partially full). Bring previous reports. Wear comfortable clothing.", color: "from-teal-500/50 to-dark-50/80", duration: "30–60 min" },
+  { icon: "📏", name: "NT/NB Scan", nameHi: "एनटी/एनबी स्कैन", desc: "First trimester screening for chromosomal risk markers (11–14 weeks)", prep: "Usually no fasting. Full bladder may be advised depending on gestational age. Carry dating scan records.", color: "from-purple-700/40 to-dark-50/80", duration: "20–30 min" },
+  { icon: "💓", name: "Pregnancy Doppler Scan", nameHi: "प्रेग्नेंसी डॉपलर स्कैन", desc: "Blood flow assessment between mother, placenta & baby", prep: "No fasting in most cases. Wear comfortable clothing and carry prior ultrasound records.", color: "from-teal-700/50 to-dark-50/80", duration: "15–30 min" },
+  { icon: "☢️", name: "X-Ray", nameHi: "एक्स-रे", desc: "Quick digital X-Ray for bones, chest & emergency assessments", prep: "Remove metal objects (jewelry, belts). Wear simple clothing. Inform staff if pregnant or possibly pregnant.", color: "from-orange-600/50 to-dark-50/80", duration: "5–15 min" },
+  { icon: "🧪", name: "Blood Tests", nameHi: "ब्लड टेस्ट", desc: "Screen organ function, infection, sugar, thyroid, lipids & more", prep: "Fasting 8–12 hours for lipid/glucose profiles (as advised). Drink plain water. Avoid alcohol/heavy meals before test.", color: "from-emerald-600/50 to-dark-50/80", duration: "5–10 min" },
+  { icon: "🧫", name: "Urine Test", nameHi: "यूरिन टेस्ट", desc: "Simple lab test for kidney health, infection, sugar & hydration clues", prep: "Prefer clean-catch midstream sample. Avoid contamination. Share current medicines with lab/doctor.", color: "from-blue-600/50 to-dark-50/80", duration: "5 min" },
 ];
 
 const REVIEWS = [
   { stars: 4, text: "I recently visited Kaveri Care for an ultrasound sonography, and my experience was fantastic. The staff was super helpful and polite.", name: "Sajan Haldar" },
-  { stars: 5, text: "Kaveri Care have advance ultrasound machine and X-ray machine. They provide sample collections service also.", name: "Yasir Siddiqui" },
-  { stars: 5, text: "Latest machines are used to do sonography. Reports are accurate and reliable.", name: "Raag Anurag" },
+  { stars: 5, text: "Kaveri Care has advanced ultrasound and X-ray machines. They also provide sample collection services.", name: "Yasir Siddiqui" },
+  { stars: 5, text: "They use the latest machines for sonography. Reports are accurate and reliable.", name: "Raag Anurag" },
   { stars: 5, text: "Excellent staff and good service. Doctors have good knowledge.", name: "Raghavendra R." },
-  { stars: 5, text: "Very nice behavior of the doctor, and good hospitality.", name: "Aman Gupta" },
-  { stars: 5, text: "Nice behavior, neat and clean diagnostic centre.", name: "Sheikh Jaan Mohammad" },
+  { stars: 5, text: "Very nice behavior from the doctor, and great hospitality.", name: "Aman Gupta" },
+  { stars: 5, text: "Nice behavior, neat and clean diagnostic center.", name: "Sheikh Jaan Mohammad" },
   { stars: 5, text: "Best diagnostic center in Korba with qualified staff and equipment.", name: "Manasali Sanjay" },
-  { stars: 5, text: "Best 4D sonography centre in Korba, quick service.", name: "Pranav Mahant" },
+  { stars: 5, text: "Best 4D sonography center in Korba, quick service.", name: "Pranav Mahant" },
   { stars: 5, text: "Best 3D and 4D ultrasound center in Korba.", name: "Abhishek Yadav" },
   { stars: 5, text: "Well maintained equipment and friendly staff.", name: "Supritha Sup" },
 ];
@@ -74,7 +75,6 @@ const STATUS_MAP = {
   cancelled: { label: "Cancelled", bg: "bg-red-500/20", text: "text-red-300", border: "border-red-500/30", dot: "bg-red-400" },
 };
 
-const NEXT_STATUS = { pending: "confirmed", confirmed: "completed", completed: "cancelled", cancelled: "pending" };
 
 /* ══════════════════════════════════════════
    TRANSLATIONS
@@ -286,12 +286,14 @@ function Reveal({ children, delay = 0, className = "" }) {
 ══════════════════════════════════════════ */
 function Counter({ target, suffix = "", label, decimal = false }) {
   const [count, setCount] = useState(0);
+  const [visible, setVisible] = useState(false);
   const ref = useRef(null);
   const started = useRef(false);
   useEffect(() => {
     const obs = new IntersectionObserver(([e]) => {
       if (e.isIntersecting && !started.current) {
         started.current = true;
+        setVisible(true);
         let start = 0;
         const step = target / 60;
         const interval = setInterval(() => {
@@ -306,9 +308,13 @@ function Counter({ target, suffix = "", label, decimal = false }) {
   }, [target, decimal]);
   return (
     <div ref={ref} className="text-center">
-      <p className="text-gradient-stat font-display text-[clamp(28px,4vw,44px)] font-black mb-1">
-        {decimal ? count.toFixed(1) : count.toLocaleString()}{suffix}
-      </p>
+      {visible ? (
+        <p className="text-gradient-stat font-display text-[clamp(28px,4vw,44px)] font-black mb-1">
+          {decimal ? count.toFixed(1) : count.toLocaleString()}{suffix}
+        </p>
+      ) : (
+        <div className="h-10 w-20 mx-auto rounded-lg bg-white/5 animate-pulse mb-1" />
+      )}
       <p className="text-xs text-white/50 font-semibold tracking-wider uppercase font-body">{label}</p>
     </div>
   );
@@ -356,7 +362,7 @@ function ToastContainer({ toasts, removeToast }) {
           {toast.type === "error" && <AlertCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />}
           {toast.type === "info" && <Info className="w-5 h-5 text-teal-400 shrink-0 mt-0.5" />}
           <p className="text-sm text-white/90 font-body">{toast.message}</p>
-          <button onClick={() => removeToast(toast.id)} className="text-white/40 hover:text-white ml-auto shrink-0">
+          <button onClick={() => removeToast(toast.id)} className="text-white/40 hover:text-white ml-auto shrink-0" aria-label="Dismiss">
             <X className="w-4 h-4" />
           </button>
         </div>
@@ -420,10 +426,32 @@ function computeOpenStatus(settings) {
    MAIN APP COMPONENT
 ══════════════════════════════════════════ */
 export default function App() {
-  // Page/view state
-  const [page, setPage] = useState("website"); // "website" | "admin"
+  const getPageFromHash = () => window.location.hash === "#/admin" ? "admin" : "website";
+
+  // Page/view state — synced with URL hash
+  const [page, setPage] = useState(getPageFromHash);
   const [lang, setLang] = useState("en");
   const L = t[lang];
+
+  const navigate = useCallback((target) => {
+    if (target === "admin") {
+      window.location.hash = "#/admin";
+    } else {
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+    setPage(target);
+  }, []);
+
+  // Sync page state when user uses browser back/forward
+  useEffect(() => {
+    const onHashChange = () => setPage(getPageFromHash());
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
+
+  useEffect(() => {
+    document.title = page === "admin" ? "Admin — Kaveri Care" : "Kaveri Care Diagnostic Center — Korba";
+  }, [page]);
 
   // Clinic settings from Supabase
   const [clinicSettings, setClinicSettings] = useState(DEFAULT_SETTINGS);
@@ -435,6 +463,18 @@ export default function App() {
   // Booking form
   const [selectedService, setSelectedService] = useState("");
   const bookingRef = useRef(null);
+
+  // Lazy testimonials
+  const [testimonialsVisible, setTestimonialsVisible] = useState(false);
+  const testimonialsRef = useRef(null);
+  useEffect(() => {
+    if (!testimonialsRef.current) return;
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { setTestimonialsVisible(true); obs.disconnect(); }
+    }, { rootMargin: "200px" });
+    obs.observe(testimonialsRef.current);
+    return () => obs.disconnect();
+  }, [page]);
 
   // Toast
   const { toasts, addToast, removeToast } = useToast();
@@ -465,7 +505,7 @@ export default function App() {
 
   const scrollToBooking = (service = "") => {
     if (service) setSelectedService(service);
-    setPage("website");
+    navigate("website");
     setTimeout(() => {
       bookingRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
     }, 100);
@@ -514,7 +554,7 @@ export default function App() {
           </div>
 
           {/* Mobile menu button */}
-          <button className="md:hidden text-white/70" onClick={() => setMobileMenu(!mobileMenu)}>
+          <button className="md:hidden text-white/70" onClick={() => setMobileMenu(!mobileMenu)} aria-label={mobileMenu ? "Close menu" : "Open menu"}>
             {mobileMenu ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </nav>
@@ -570,7 +610,7 @@ export default function App() {
             <div className="flex flex-wrap gap-3 mt-8">
               <button
                 onClick={() => scrollToBooking()}
-                className="flex items-center gap-2.5 bg-gradient-to-br from-teal-600 to-teal-500 rounded-full px-7 py-3.5 text-white font-bold text-sm shadow-teal hover:shadow-lg transition-all animate-pulse-ring"
+                className="flex items-center gap-2.5 bg-gradient-to-br from-teal-600 to-teal-500 rounded-full px-7 py-3.5 text-white font-bold text-sm shadow-teal hover:shadow-lg hover:scale-[1.02] active:scale-95 transition-all"
               >
                 <Calendar className="w-4.5 h-4.5" /> {L.bookBtn}
               </button>
@@ -647,16 +687,23 @@ export default function App() {
         </section>
 
         {/* ── TRUST / REVIEWS ── */}
-        <section className="py-20 overflow-hidden relative">
+        <section ref={testimonialsRef} className="py-20 overflow-hidden relative">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-teal-600/[0.04] to-transparent pointer-events-none" />
           <Reveal>
             <p className="text-center text-[11px] text-teal-500 tracking-[3px] uppercase font-bold mb-3">{lang === "en" ? "What Patients Say" : "मरीज़ क्या कहते हैं"}</p>
             <h2 className="text-center font-display text-[clamp(24px,4vw,42px)] font-black text-gradient-white mb-10">{L.trustTitle}</h2>
           </Reveal>
-          <div className="flex flex-col gap-4">
-            <Marquee items={REVIEWS} />
-            <Marquee items={[...REVIEWS].reverse()} reverse />
-          </div>
+          {testimonialsVisible ? (
+            <div className="flex flex-col gap-4">
+              <Marquee items={REVIEWS.slice(0, 5)} />
+              <Marquee items={REVIEWS.slice(5)} reverse />
+            </div>
+          ) : (
+            <div className="flex flex-col gap-4">
+              <div className="h-28 w-full rounded-2xl bg-white/5 animate-pulse" />
+              <div className="h-28 w-full rounded-2xl bg-white/5 animate-pulse" />
+            </div>
+          )}
           <div className="text-center mt-8">
             <div className="inline-flex items-center gap-2 bg-gold-500/10 border border-gold-500/25 rounded-full px-5 py-2.5">
               <Star className="w-5 h-5 text-gold-400 fill-gold-400" />
@@ -676,7 +723,7 @@ export default function App() {
               <GlassCard className="p-0 overflow-hidden h-full min-h-[300px]" hover={false}>
                 <iframe
                   title="Kaveri Care Diagnostic Center Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3692.5!2d82.68!3d22.35!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDIxJzAwLjAiTiA4MsKwNDAnNDguMCJF!5e0!3m2!1sen!2sin!4v1234567890"
+                  src="https://maps.google.com/maps?q=Kaveri+Care+Diagnostic+Center+Korba&t=&z=15&ie=UTF8&iwloc=&output=embed"
                   className="w-full h-full min-h-[300px] border-0 rounded-2xl"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -700,7 +747,7 @@ export default function App() {
               <a href="#services" className="hover:text-white transition-colors">{L.servicesTitle.split(" ")[0]}</a>
               <a href="#booking" className="hover:text-white transition-colors">{L.bookBtn}</a>
               <a href="#contact" className="hover:text-white transition-colors">{L.findUs}</a>
-              <button onClick={() => setPage("admin")} className="hover:text-white transition-colors">{L.admin}</button>
+              <button onClick={() => navigate("admin")} className="hover:text-white transition-colors">{L.admin}</button>
             </div>
             <div className="flex items-center gap-4">
               <div className="flex gap-0.5">
@@ -717,6 +764,7 @@ export default function App() {
           href="https://wa.me/916267580898"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Chat on WhatsApp"
           className="fixed bottom-6 right-6 z-[90] w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center text-2xl shadow-green animate-float-y-fast hover:scale-110 transition-transform"
         >
           💬
@@ -725,7 +773,7 @@ export default function App() {
         {/* ── FLOATING BOOK NOW PILL ── */}
         <button
           onClick={() => scrollToBooking()}
-          className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[89] md:hidden bg-gradient-to-br from-teal-600 to-teal-500 rounded-full px-6 py-3 text-white font-bold text-sm shadow-teal animate-pulse-ring flex items-center gap-2"
+          className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[89] md:hidden bg-gradient-to-br from-teal-600 to-teal-500 rounded-full px-6 py-3 text-white font-bold text-sm shadow-teal hover:shadow-lg hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-2"
         >
           <Calendar className="w-4 h-4" /> {L.bookBtn}
         </button>
@@ -739,7 +787,7 @@ export default function App() {
       addToast={addToast}
       toasts={toasts}
       removeToast={removeToast}
-      onBack={() => setPage("website")}
+      onBack={() => navigate("website")}
       clinicSettings={clinicSettings}
     />
   );
@@ -755,7 +803,7 @@ function ServiceCard({ service, delay, lang, L, onBook }) {
       <GlassCard className="overflow-hidden h-full">
         <div className={`bg-gradient-to-br ${service.color} p-6 relative min-h-[180px] flex flex-col justify-end`}>
           <div className="absolute top-4 right-4 text-3xl opacity-60">{service.icon}</div>
-          <p className="font-bold text-base mb-1">{service.name}</p>
+          <p className="font-bold text-base mb-1">{lang === "hi" && service.nameHi ? service.nameHi : service.name}</p>
           <p className="text-xs text-white/55">{service.desc}</p>
         </div>
         <div className="p-4">
@@ -865,8 +913,10 @@ function BookingForm({ lang, L, preselectedService, onServiceUsed, addToast }) {
   const [errors, setErrors] = useState({});
   const [slots, setSlots] = useState(null);
   const [loadingSlots, setLoadingSlots] = useState(false);
+  const [slotError, setSlotError] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
 
   // Apply preselected service
   useEffect(() => {
@@ -881,38 +931,43 @@ function BookingForm({ lang, L, preselectedService, onServiceUsed, addToast }) {
     setErrors(e => ({ ...e, [field]: "" }));
   };
 
-  // Fetch slots when date changes
-  useEffect(() => {
-    if (!form.date) { setSlots(null); return; }
+  const fetchSlots = useCallback(async (dateStr) => {
     setLoadingSlots(true);
-    setForm(f => ({ ...f, time: "" }));
-
-    const loadSlots = async () => {
-      try {
-        if (!supabaseReady) throw new Error("Supabase not configured");
-        const { data, error } = await supabase.from("slots").select("slot_data").eq("date", form.date).single();
-        if (error && error.code !== "PGRST116") throw error;
-        if (data?.slot_data) {
-          setSlots(data.slot_data);
-        } else {
-          const defaults = {};
-          ALL_SLOTS.forEach(time => { defaults[time] = { max: 3, booked: 0, blocked: false }; });
-          setSlots(defaults);
-        }
-      } catch {
+    setSlotError(false);
+    try {
+      if (!supabaseReady) throw new Error("Supabase not configured");
+      const { data, error } = await supabase.from("slots").select("slot_data").eq("date", dateStr).single();
+      if (error && error.code !== "PGRST116") throw error;
+      if (data?.slot_data) {
+        setSlots(data.slot_data);
+      } else {
         const defaults = {};
         ALL_SLOTS.forEach(time => { defaults[time] = { max: 3, booked: 0, blocked: false }; });
         setSlots(defaults);
-      } finally {
-        setLoadingSlots(false);
       }
-    };
-    loadSlots();
-  }, [form.date]);
+    } catch (err) {
+      console.error("Slot fetch error:", err);
+      setSlotError(true);
+      const defaults = {};
+      ALL_SLOTS.forEach(time => { defaults[time] = { max: 3, booked: 0, blocked: false }; });
+      setSlots(defaults);
+      addToast(lang === "en" ? "Could not load slots. Showing defaults." : "स्लॉट लोड नहीं हो सके। डिफ़ॉल्ट दिखा रहे हैं।", "error");
+    } finally {
+      setLoadingSlots(false);
+    }
+  }, [lang, addToast]);
+
+  // Fetch slots when date changes
+  useEffect(() => {
+    if (!form.date) { setSlots(null); setSlotError(false); return; }
+    setForm(f => ({ ...f, time: "" }));
+    fetchSlots(form.date);
+  }, [form.date, fetchSlots]);
 
   const validate = () => {
     const e = {};
     if (!form.name.trim()) e.name = lang === "en" ? "Name is required" : "नाम आवश्यक है";
+    else if (form.name.trim().length < 2) e.name = lang === "en" ? "Name must be at least 2 characters" : "नाम कम से कम 2 अक्षर का होना चाहिए";
     if (!/^\d{10}$/.test(form.phone)) e.phone = lang === "en" ? "Enter valid 10-digit number" : "10 अंकों का नंबर दें";
     if (!form.service) e.service = lang === "en" ? "Select a service" : "सेवा चुनें";
     if (!form.date) e.date = lang === "en" ? "Select a date" : "तिथि चुनें";
@@ -923,14 +978,30 @@ function BookingForm({ lang, L, preselectedService, onServiceUsed, addToast }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (honeypot) return;
     if (!validate()) return;
+
+    const lastBooking = parseInt(localStorage.getItem("kaveri_last_booking") || "0", 10);
+    if (Date.now() - lastBooking < 60000) {
+      addToast(lang === "en" ? "Please wait before booking again" : "कृपया दोबारा बुकिंग से पहले प्रतीक्षा करें", "error");
+      return;
+    }
+
     setSubmitting(true);
+
+    if (supabaseReady) {
+      const { data: dup } = await supabase.from("bookings").select("id").eq("phone", form.phone).eq("date", form.date).eq("time", form.time).limit(1);
+      if (dup?.length) {
+        addToast(lang === "en" ? "You already have a booking for this slot" : "इस स्लॉट के लिए आपकी बुकिंग पहले से है", "error");
+        setSubmitting(false);
+        return;
+      }
+    }
 
     let dbSuccess = false;
     try {
       if (!supabaseReady) throw new Error("Supabase not configured");
 
-      // Write booking row
       const { error: bookErr } = await supabase.from("bookings").insert({
         name: form.name,
         phone: form.phone,
@@ -955,6 +1026,7 @@ function BookingForm({ lang, L, preselectedService, onServiceUsed, addToast }) {
       }
 
       dbSuccess = true;
+      localStorage.setItem("kaveri_last_booking", Date.now().toString());
     } catch (err) {
       console.error("Booking Supabase error:", err);
     }
@@ -999,6 +1071,7 @@ function BookingForm({ lang, L, preselectedService, onServiceUsed, addToast }) {
 
   return (
     <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
+      <input type="text" name="website" value={honeypot} onChange={e => setHoneypot(e.target.value)} tabIndex={-1} autoComplete="off" className="absolute opacity-0 h-0 w-0 overflow-hidden" aria-hidden="true" />
       <GlassCard className="p-6 md:p-8" hover={false}>
         <div className="space-y-5">
           {/* Name */}
@@ -1007,7 +1080,8 @@ function BookingForm({ lang, L, preselectedService, onServiceUsed, addToast }) {
             <div className="relative">
               <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
               <input
-                type="text" value={form.name} onChange={e => updateField("name", e.target.value)}
+                type="text" value={form.name} onChange={e => updateField("name", e.target.value.replace(/\s+/g, " "))}
+                maxLength={60}
                 className="w-full bg-white/5 border border-white/10 rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-teal-500/50 focus:ring-1 focus:ring-teal-500/30 transition-colors"
                 placeholder={lang === "en" ? "Enter your name" : "अपना नाम दें"}
               />
@@ -1022,6 +1096,7 @@ function BookingForm({ lang, L, preselectedService, onServiceUsed, addToast }) {
               <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
               <input
                 type="tel" value={form.phone} onChange={e => updateField("phone", e.target.value.replace(/\D/g, "").slice(0, 10))}
+                maxLength={10}
                 className="w-full bg-white/5 border border-white/10 rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-teal-500/50 focus:ring-1 focus:ring-teal-500/30 transition-colors"
                 placeholder="9876543210"
               />
@@ -1037,7 +1112,7 @@ function BookingForm({ lang, L, preselectedService, onServiceUsed, addToast }) {
               className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-teal-500/50 focus:ring-1 focus:ring-teal-500/30 transition-colors appearance-none"
             >
               <option value="" className="bg-dark">{L.service}</option>
-              {SERVICES.map(s => <option key={s.name} value={s.name} className="bg-dark">{s.icon} {s.name}</option>)}
+              {SERVICES.map(s => <option key={s.name} value={s.name} className="bg-dark">{s.icon} {lang === "hi" && s.nameHi ? s.nameHi : s.name}</option>)}
             </select>
             {errors.service && <p className="text-red-400 text-xs mt-1">{errors.service}</p>}
           </div>
@@ -1096,6 +1171,15 @@ function BookingForm({ lang, L, preselectedService, onServiceUsed, addToast }) {
                   })}
                 </div>
               ) : null}
+              {slotError && (
+                <div className="flex items-center gap-2 mt-2 text-xs text-yellow-300 bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-2.5">
+                  <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                  <span>{lang === "en" ? "Slots loaded from defaults — could not reach server." : "स्लॉट डिफ़ॉल्ट से लोड — सर्वर से संपर्क नहीं हो सका।"}</span>
+                  <button type="button" onClick={() => fetchSlots(form.date)} className="ml-auto text-teal-300 font-bold hover:text-teal-200 shrink-0">
+                    {lang === "en" ? "Retry" : "पुनः प्रयास"}
+                  </button>
+                </div>
+              )}
               {errors.time && <p className="text-red-400 text-xs mt-1">{errors.time}</p>}
             </div>
           )}
@@ -1124,16 +1208,40 @@ function BookingForm({ lang, L, preselectedService, onServiceUsed, addToast }) {
 function AdminPanel({ addToast, toasts, removeToast, onBack, clinicSettings }) {
   const [authenticated, setAuthenticated] = useState(false);
   const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
+  const [loggingIn, setLoggingIn] = useState(false);
   const [shaking, setShaking] = useState(false);
   const [activeTab, setActiveTab] = useState("overview");
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (password === "kaveri2024") {
-      setAuthenticated(true);
-    } else {
+    setLoginError("");
+
+    if (!password.trim()) {
+      setLoginError("Password is required");
       setShaking(true);
       setTimeout(() => setShaking(false), 500);
+      return;
+    }
+
+    setLoggingIn(true);
+    try {
+      if (!supabaseReady) throw new Error("Backend not configured");
+      const { data, error } = await supabase.rpc("verify_admin_password", { pwd: password });
+      if (error) throw error;
+      if (data === true) {
+        setAuthenticated(true);
+      } else {
+        setLoginError("Invalid password");
+        setShaking(true);
+        setTimeout(() => setShaking(false), 500);
+      }
+    } catch (err) {
+      setLoginError("Login failed — " + (err.message || "try again"));
+      setShaking(true);
+      setTimeout(() => setShaking(false), 500);
+    } finally {
+      setLoggingIn(false);
     }
   };
 
@@ -1151,17 +1259,28 @@ function AdminPanel({ addToast, toasts, removeToast, onBack, clinicSettings }) {
               <p className="text-white/40 text-xs mt-1">{clinicSettings.name}</p>
             </div>
             <form onSubmit={handleLogin} className="space-y-4">
-              <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
-                <input
-                  type="password" value={password} onChange={e => setPassword(e.target.value)}
-                  placeholder="Enter password"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-teal-500/50 focus:ring-1 focus:ring-teal-500/30 transition-colors"
-                  autoFocus
-                />
+              <div>
+                <div className="relative">
+                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
+                  <input
+                    type="password" value={password}
+                    onChange={e => { setPassword(e.target.value); setLoginError(""); }}
+                    placeholder="Enter password"
+                    aria-label="Admin password"
+                    autoComplete="current-password"
+                    className={`w-full bg-white/5 border rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:ring-1 transition-colors ${loginError ? "border-red-500/50 focus:border-red-500/50 focus:ring-red-500/30" : "border-white/10 focus:border-teal-500/50 focus:ring-teal-500/30"}`}
+                    autoFocus
+                    disabled={loggingIn}
+                  />
+                </div>
+                {loginError && <p className="text-red-400 text-xs mt-1.5 flex items-center gap-1"><AlertCircle className="w-3 h-3" />{loginError}</p>}
               </div>
-              <button type="submit" className="w-full py-3 rounded-xl bg-gradient-to-br from-teal-600 to-teal-500 text-white font-bold text-sm shadow-teal hover:shadow-lg transition-all">
-                Login
+              <button
+                type="submit"
+                disabled={loggingIn}
+                className="w-full py-3 rounded-xl bg-gradient-to-br from-teal-600 to-teal-500 text-white font-bold text-sm shadow-teal hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              >
+                {loggingIn ? <><Loader2 className="w-4 h-4 animate-spin" /> Verifying...</> : "Login"}
               </button>
             </form>
             <button onClick={onBack} className="w-full mt-4 text-white/40 text-xs hover:text-white/70 transition-colors flex items-center justify-center gap-1">
@@ -1356,10 +1475,12 @@ function SlotManagerTab({ addToast }) {
   const [date, setDate] = useState(todayStr());
   const [slots, setSlots] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [slotError, setSlotError] = useState(false);
   const [saving, setSaving] = useState(false);
 
   const loadSlots = useCallback(async (d) => {
     setLoading(true);
+    setSlotError(false);
     try {
       if (!supabaseReady) throw new Error("Supabase not configured");
       const { data, error } = await supabase.from("slots").select("slot_data").eq("date", d).single();
@@ -1371,14 +1492,17 @@ function SlotManagerTab({ addToast }) {
         ALL_SLOTS.forEach(time => { defaults[time] = { max: 3, booked: 0, blocked: false }; });
         setSlots(defaults);
       }
-    } catch {
+    } catch (err) {
+      console.error("Admin slot fetch error:", err);
+      setSlotError(true);
       const defaults = {};
       ALL_SLOTS.forEach(time => { defaults[time] = { max: 3, booked: 0, blocked: false }; });
       setSlots(defaults);
+      addToast("Could not load slots — showing defaults", "error");
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [addToast]);
 
   useEffect(() => { if (date) loadSlots(date); }, [date, loadSlots]);
 
@@ -1429,8 +1553,9 @@ function SlotManagerTab({ addToast }) {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center gap-4">
         <div>
-          <label className="block text-xs font-semibold text-white/50 mb-1">Date</label>
+          <label htmlFor="slot-date" className="block text-xs font-semibold text-white/50 mb-1">Date</label>
           <input
+            id="slot-date"
             type="date" value={date} onChange={e => setDate(e.target.value)}
             className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-teal-500/50 transition-colors"
           />
@@ -1441,6 +1566,14 @@ function SlotManagerTab({ addToast }) {
           </button>
         </div>
       </div>
+
+      {slotError && (
+        <div className="flex items-center gap-2 text-xs text-yellow-300 bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-3">
+          <AlertCircle className="w-4 h-4 shrink-0" />
+          <span>Could not reach server — showing default slot configuration.</span>
+          <button onClick={() => loadSlots(date)} className="ml-auto text-teal-300 font-bold hover:text-teal-200 shrink-0">Retry</button>
+        </div>
+      )}
 
       {loading ? (
         <div className="flex items-center justify-center py-12">
@@ -1463,17 +1596,18 @@ function SlotManagerTab({ addToast }) {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-1">
                       <span className="text-xs text-white/40">Max:</span>
-                      <button onClick={() => changeMax(time, -1)} className="w-6 h-6 rounded bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors">
+                      <button onClick={() => changeMax(time, -1)} className="w-6 h-6 rounded bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors" aria-label="Decrease max patients">
                         <Minus className="w-3 h-3" />
                       </button>
                       <span className="text-xs font-bold w-5 text-center">{slot.max}</span>
-                      <button onClick={() => changeMax(time, 1)} className="w-6 h-6 rounded bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors">
+                      <button onClick={() => changeMax(time, 1)} className="w-6 h-6 rounded bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors" aria-label="Increase max patients">
                         <Plus className="w-3 h-3" />
                       </button>
                     </div>
                     <button
                       onClick={() => toggleBlock(time)}
                       className={`text-[10px] font-bold px-2.5 py-1 rounded-lg border transition-colors ${slot.blocked ? "bg-red-600/20 border-red-500/30 text-red-300" : "bg-white/5 border-white/10 text-white/50 hover:text-white/80"}`}
+                      aria-label={slot.blocked ? "Unblock slot" : "Block slot"}
                     >
                       {slot.blocked ? "Blocked" : "Active"}
                     </button>
@@ -1507,6 +1641,9 @@ function AppointmentsTab({ addToast }) {
   const [filterDate, setFilterDate] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [confirmDelete, setConfirmDelete] = useState(null);
+  const [confirmCancel, setConfirmCancel] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const PAGE_SIZE = 15;
 
   useEffect(() => {
     if (!supabaseReady) { setLoading(false); return; }
@@ -1526,15 +1663,27 @@ function AppointmentsTab({ addToast }) {
     return () => { supabase.removeChannel(channel); };
   }, []);
 
-  const cycleStatus = async (booking) => {
+  const updateStatus = async (booking, newStatus) => {
+    if (newStatus === booking.status) return;
+    if (newStatus === "cancelled") {
+      setConfirmCancel({ id: booking.id, from: booking.status });
+      return;
+    }
+    await commitStatusChange(booking.id, booking.status, newStatus);
+  };
+
+  const commitStatusChange = async (id, fromStatus, toStatus) => {
     try {
       if (!supabaseReady) throw new Error("Supabase not configured");
-      const next = NEXT_STATUS[booking.status] || "pending";
-      const { error } = await supabase.from("bookings").update({ status: next }).eq("id", booking.id);
+      const { error } = await supabase.from("bookings").update({ status: toStatus }).eq("id", id);
       if (error) throw error;
+      const fromLabel = STATUS_MAP[fromStatus]?.label || fromStatus;
+      const toLabel = STATUS_MAP[toStatus]?.label || toStatus;
+      addToast(`Status: ${fromLabel} → ${toLabel}`, "success");
     } catch (err) {
       addToast("Failed to update — " + err.message, "error");
     }
+    setConfirmCancel(null);
   };
 
   const handleDelete = async (id) => {
@@ -1566,6 +1715,28 @@ function AppointmentsTab({ addToast }) {
     return true;
   });
 
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const safePage = Math.min(currentPage, totalPages);
+  const paginated = filtered.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE);
+
+  useEffect(() => { setCurrentPage(1); }, [filterStatus, filterDate, searchTerm]);
+
+  const exportCSV = () => {
+    const header = "Name,Phone,Service,Date,Time,Status";
+    const rows = filtered.map(b =>
+      [b.name, b.phone, b.service, b.date, b.time, b.status].map(v => `"${(v || "").replace(/"/g, '""')}"`).join(",")
+    );
+    const csv = [header, ...rows].join("\n");
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `bookings-${new Date().toISOString().split("T")[0]}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+    addToast(`Exported ${filtered.length} booking${filtered.length !== 1 ? "s" : ""}`, "success");
+  };
+
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
@@ -1579,8 +1750,9 @@ function AppointmentsTab({ addToast }) {
       {/* Filters */}
       <div className="flex flex-wrap gap-3 items-end">
         <div>
-          <label className="block text-xs font-semibold text-white/40 mb-1">Status</label>
+          <label htmlFor="filter-status" className="block text-xs font-semibold text-white/40 mb-1">Status</label>
           <select
+            id="filter-status"
             value={filterStatus} onChange={e => setFilterStatus(e.target.value)}
             className="bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-teal-500/50 transition-colors"
           >
@@ -1589,17 +1761,19 @@ function AppointmentsTab({ addToast }) {
           </select>
         </div>
         <div>
-          <label className="block text-xs font-semibold text-white/40 mb-1">Date</label>
+          <label htmlFor="filter-date" className="block text-xs font-semibold text-white/40 mb-1">Date</label>
           <input
+            id="filter-date"
             type="date" value={filterDate} onChange={e => setFilterDate(e.target.value)}
             className="bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-teal-500/50 transition-colors"
           />
         </div>
         <div className="flex-1 min-w-[200px]">
-          <label className="block text-xs font-semibold text-white/40 mb-1">Search</label>
+          <label htmlFor="filter-search" className="block text-xs font-semibold text-white/40 mb-1">Search</label>
           <div className="relative">
             <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-white/30" />
             <input
+              id="filter-search"
               type="text" value={searchTerm} onChange={e => setSearchTerm(e.target.value)}
               placeholder="Name or phone..."
               className="w-full bg-white/5 border border-white/10 rounded-lg pl-8 pr-3 py-2 text-xs text-white placeholder-white/30 focus:outline-none focus:border-teal-500/50 transition-colors"
@@ -1609,6 +1783,11 @@ function AppointmentsTab({ addToast }) {
         {(filterStatus !== "all" || filterDate || searchTerm) && (
           <button onClick={() => { setFilterStatus("all"); setFilterDate(""); setSearchTerm(""); }} className="text-xs text-white/40 hover:text-white/70 underline pb-2">
             Clear
+          </button>
+        )}
+        {filtered.length > 0 && (
+          <button onClick={exportCSV} className="ml-auto flex items-center gap-1.5 text-xs text-teal-300 hover:text-teal-200 font-semibold pb-2 transition-colors" aria-label="Export bookings as CSV">
+            <Download className="w-3.5 h-3.5" /> Export CSV
           </button>
         )}
       </div>
@@ -1624,10 +1803,10 @@ function AppointmentsTab({ addToast }) {
               </tr>
             </thead>
             <tbody>
-              {filtered.length === 0 ? (
+              {paginated.length === 0 ? (
                 <tr><td colSpan={7} className="px-4 py-8 text-center text-white/30 text-xs">No bookings found</td></tr>
               ) : (
-                filtered.map(b => {
+                paginated.map(b => {
                   const st = STATUS_MAP[b.status] || STATUS_MAP.pending;
                   return (
                     <tr key={b.id} className="border-b border-white/[0.03] hover:bg-white/[0.02]">
@@ -1637,17 +1816,28 @@ function AppointmentsTab({ addToast }) {
                       <td className="px-4 py-3 text-white/60 whitespace-nowrap">{b.date}</td>
                       <td className="px-4 py-3 text-white/60 whitespace-nowrap">{b.time}</td>
                       <td className="px-4 py-3">
-                        <button
-                          onClick={() => cycleStatus(b)}
-                          className={`inline-flex items-center gap-1.5 text-xs font-bold px-2.5 py-1 rounded-full transition-colors cursor-pointer ${st.bg} ${st.text} border ${st.border} hover:opacity-80`}
-                          title="Click to change status"
-                        >
-                          <span className={`w-1.5 h-1.5 rounded-full ${st.dot}`} /> {st.label}
-                        </button>
+                        {confirmCancel?.id === b.id ? (
+                          <div className="flex items-center gap-1.5">
+                            <span className="text-[10px] text-red-300 font-bold">Cancel?</span>
+                            <button onClick={() => commitStatusChange(b.id, confirmCancel.from, "cancelled")} className="px-2 py-0.5 rounded bg-red-600/30 text-red-300 text-[10px] font-bold hover:bg-red-600/40">Yes</button>
+                            <button onClick={() => setConfirmCancel(null)} className="px-2 py-0.5 rounded bg-white/5 text-white/50 text-[10px] font-bold hover:bg-white/10">No</button>
+                          </div>
+                        ) : (
+                          <select
+                            value={b.status}
+                            onChange={e => updateStatus(b, e.target.value)}
+                            aria-label={`Change status for ${b.name}`}
+                            className={`text-xs font-bold px-2 py-1 rounded-full appearance-none cursor-pointer border transition-colors ${st.bg} ${st.text} ${st.border} hover:opacity-80`}
+                          >
+                            {Object.entries(STATUS_MAP).map(([key, val]) => (
+                              <option key={key} value={key} className="bg-dark text-white">{val.label}</option>
+                            ))}
+                          </select>
+                        )}
                       </td>
                       <td className="px-4 py-3">
                         <div className="flex items-center gap-1.5">
-                          <button onClick={() => openWhatsApp(b)} className="p-1.5 rounded-lg bg-green-600/20 hover:bg-green-600/30 text-green-300 transition-colors" title="WhatsApp">
+                          <button onClick={() => openWhatsApp(b)} className="p-1.5 rounded-lg bg-green-600/20 hover:bg-green-600/30 text-green-300 transition-colors" title="WhatsApp" aria-label="Message on WhatsApp">
                             <MessageCircle className="w-3.5 h-3.5" />
                           </button>
                           {confirmDelete === b.id ? (
@@ -1656,7 +1846,7 @@ function AppointmentsTab({ addToast }) {
                               <button onClick={() => setConfirmDelete(null)} className="p-1.5 rounded-lg bg-white/5 text-white/50 text-[10px] font-bold">No</button>
                             </div>
                           ) : (
-                            <button onClick={() => setConfirmDelete(b.id)} className="p-1.5 rounded-lg bg-red-600/10 hover:bg-red-600/20 text-red-400 transition-colors" title="Delete">
+                            <button onClick={() => setConfirmDelete(b.id)} className="p-1.5 rounded-lg bg-red-600/10 hover:bg-red-600/20 text-red-400 transition-colors" title="Delete" aria-label="Delete booking">
                               <Trash2 className="w-3.5 h-3.5" />
                             </button>
                           )}
@@ -1670,7 +1860,30 @@ function AppointmentsTab({ addToast }) {
           </table>
         </div>
       </GlassCard>
-      <p className="text-xs text-white/30">{filtered.length} booking{filtered.length !== 1 ? "s" : ""} shown</p>
+      <div className="flex items-center justify-between">
+        <p className="text-xs text-white/30">{filtered.length} booking{filtered.length !== 1 ? "s" : ""}{totalPages > 1 ? ` — page ${safePage} of ${totalPages}` : ""}</p>
+        {totalPages > 1 && (
+          <div className="flex items-center gap-1.5">
+            <button
+              onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+              disabled={safePage <= 1}
+              className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-white/50 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+              aria-label="Previous page"
+            >
+              <ChevronLeft className="w-3.5 h-3.5" />
+            </button>
+            <span className="text-xs text-white/50 font-semibold min-w-[3rem] text-center">{safePage} / {totalPages}</span>
+            <button
+              onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+              disabled={safePage >= totalPages}
+              className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-white/50 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+              aria-label="Next page"
+            >
+              <ChevronRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
@@ -1681,12 +1894,14 @@ function AppointmentsTab({ addToast }) {
 function SettingsTab({ addToast, currentSettings }) {
   const [settings, setSettings] = useState(currentSettings);
   const [saving, setSaving] = useState(false);
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     setSettings(currentSettings);
   }, [currentSettings]);
 
   const update = (path, value) => {
+    setErrors(e => ({ ...e, [path]: "" }));
     setSettings(prev => {
       const next = { ...prev };
       const keys = path.split(".");
@@ -1700,7 +1915,46 @@ function SettingsTab({ addToast, currentSettings }) {
     });
   };
 
+  const validateSettings = () => {
+    const e = {};
+    if (!settings.name?.trim()) e.name = "Clinic name is required";
+    else if (settings.name.length > 100) e.name = "Max 100 characters";
+
+    if (!settings.phone1?.trim()) e.phone1 = "Phone 1 is required";
+    else if (!/^\d{10}$/.test(settings.phone1)) e.phone1 = "Must be a 10-digit number";
+
+    if (settings.phone2?.trim() && !/^\d{10}$/.test(settings.phone2)) e.phone2 = "Must be a 10-digit number";
+
+    if (!settings.address?.trim()) e.address = "Address is required";
+    else if (settings.address.length > 300) e.address = "Max 300 characters";
+
+    const timeRe = /^\d{2}:\d{2}$/;
+    const toMin = (t) => { const [h, m] = t.split(":").map(Number); return h * 60 + m; };
+
+    const validateSession = (prefix, label) => {
+      const open = settings.hours?.[prefix.split(".")[0]]?.[prefix.split(".")[1]] || "";
+      const closeKey = prefix.replace("open", "close");
+      const close = settings.hours?.[closeKey.split(".")[0]]?.[closeKey.split(".")[1]] || "";
+      const openPath = `hours.${prefix}`;
+      const closePath = `hours.${closeKey}`;
+      if (!timeRe.test(open)) e[openPath] = "Valid time required";
+      if (!timeRe.test(close)) e[closePath] = "Valid time required";
+      if (timeRe.test(open) && timeRe.test(close) && toMin(close) <= toMin(open)) {
+        e[closePath] = `Must be after ${label} open time`;
+      }
+    };
+
+    validateSession("weekday.open", "Weekday morning");
+    validateSession("weekday.open2", "Weekday evening");
+    validateSession("sunday.open", "Sunday morning");
+    validateSession("sunday.open2", "Sunday evening");
+
+    setErrors(e);
+    return Object.keys(e).length === 0;
+  };
+
   const saveSettings = async () => {
+    if (!validateSettings()) return;
     setSaving(true);
     try {
       if (!supabaseReady) throw new Error("Supabase not configured");
@@ -1715,6 +1969,9 @@ function SettingsTab({ addToast, currentSettings }) {
   };
 
   const inputCls = "w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-teal-500/50 focus:ring-1 focus:ring-teal-500/30 transition-colors";
+  const errCls = "border-red-500/50 focus:border-red-500/50 focus:ring-red-500/30";
+  const fieldCls = (key) => `${inputCls} ${errors[key] ? errCls : ""}`;
+  const errMsg = (key) => errors[key] ? <p className="text-red-400 text-xs mt-1">{errors[key]}</p> : null;
 
   return (
     <div className="max-w-2xl space-y-6">
@@ -1722,22 +1979,26 @@ function SettingsTab({ addToast, currentSettings }) {
         <h3 className="font-bold text-sm mb-4 flex items-center gap-2"><Settings className="w-4 h-4 text-teal-400" /> Clinic Information</h3>
         <div className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-white/50 mb-1">Clinic Name</label>
-            <input value={settings.name} onChange={e => update("name", e.target.value)} className={inputCls} />
+            <label htmlFor="settings-name" className="block text-xs font-semibold text-white/50 mb-1">Clinic Name</label>
+            <input id="settings-name" value={settings.name} onChange={e => update("name", e.target.value)} maxLength={100} className={fieldCls("name")} />
+            {errMsg("name")}
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-white/50 mb-1">Phone 1</label>
-              <input value={settings.phone1} onChange={e => update("phone1", e.target.value)} className={inputCls} />
+              <label htmlFor="settings-phone1" className="block text-xs font-semibold text-white/50 mb-1">Phone 1</label>
+              <input id="settings-phone1" value={settings.phone1} onChange={e => update("phone1", e.target.value.replace(/\D/g, "").slice(0, 10))} className={fieldCls("phone1")} placeholder="10-digit number" />
+              {errMsg("phone1")}
             </div>
             <div>
-              <label className="block text-xs font-semibold text-white/50 mb-1">Phone 2</label>
-              <input value={settings.phone2 || ""} onChange={e => update("phone2", e.target.value)} className={inputCls} placeholder="Optional" />
+              <label htmlFor="settings-phone2" className="block text-xs font-semibold text-white/50 mb-1">Phone 2</label>
+              <input id="settings-phone2" value={settings.phone2 || ""} onChange={e => update("phone2", e.target.value.replace(/\D/g, "").slice(0, 10))} className={fieldCls("phone2")} placeholder="Optional" />
+              {errMsg("phone2")}
             </div>
           </div>
           <div>
-            <label className="block text-xs font-semibold text-white/50 mb-1">Address</label>
-            <textarea value={settings.address} onChange={e => update("address", e.target.value)} rows={2} className={inputCls + " resize-none"} />
+            <label htmlFor="settings-address" className="block text-xs font-semibold text-white/50 mb-1">Address</label>
+            <textarea id="settings-address" value={settings.address} onChange={e => update("address", e.target.value)} rows={2} maxLength={300} className={fieldCls("address") + " resize-none"} />
+            {errMsg("address")}
           </div>
         </div>
       </GlassCard>
@@ -1745,58 +2006,28 @@ function SettingsTab({ addToast, currentSettings }) {
       <GlassCard className="p-6" hover={false}>
         <h3 className="font-bold text-sm mb-4 flex items-center gap-2"><Clock className="w-4 h-4 text-teal-400" /> Operating Hours</h3>
         <div className="space-y-4">
-          <div>
-            <p className="text-xs font-semibold text-white/50 mb-2">Weekday — Session 1 (Morning)</p>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-[10px] text-white/40 mb-1">Open</label>
-                <input type="time" value={settings.hours?.weekday?.open || "10:00"} onChange={e => update("hours.weekday.open", e.target.value)} className={inputCls} />
-              </div>
-              <div>
-                <label className="block text-[10px] text-white/40 mb-1">Close</label>
-                <input type="time" value={settings.hours?.weekday?.close || "15:00"} onChange={e => update("hours.weekday.close", e.target.value)} className={inputCls} />
-              </div>
-            </div>
-          </div>
-          <div>
-            <p className="text-xs font-semibold text-white/50 mb-2">Weekday — Session 2 (Evening)</p>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-[10px] text-white/40 mb-1">Open</label>
-                <input type="time" value={settings.hours?.weekday?.open2 || "17:30"} onChange={e => update("hours.weekday.open2", e.target.value)} className={inputCls} />
-              </div>
-              <div>
-                <label className="block text-[10px] text-white/40 mb-1">Close</label>
-                <input type="time" value={settings.hours?.weekday?.close2 || "19:00"} onChange={e => update("hours.weekday.close2", e.target.value)} className={inputCls} />
+          {[
+            { label: "Weekday — Session 1 (Morning)", openKey: "hours.weekday.open", closeKey: "hours.weekday.close", openVal: settings.hours?.weekday?.open || "10:00", closeVal: settings.hours?.weekday?.close || "15:00" },
+            { label: "Weekday — Session 2 (Evening)", openKey: "hours.weekday.open2", closeKey: "hours.weekday.close2", openVal: settings.hours?.weekday?.open2 || "17:30", closeVal: settings.hours?.weekday?.close2 || "19:00" },
+            { label: "Sunday — Session 1 (Morning)", openKey: "hours.sunday.open", closeKey: "hours.sunday.close", openVal: settings.hours?.sunday?.open || "10:00", closeVal: settings.hours?.sunday?.close || "15:00" },
+            { label: "Sunday — Session 2 (Evening)", openKey: "hours.sunday.open2", closeKey: "hours.sunday.close2", openVal: settings.hours?.sunday?.open2 || "17:30", closeVal: settings.hours?.sunday?.close2 || "19:00" },
+          ].map(session => (
+            <div key={session.openKey}>
+              <p className="text-xs font-semibold text-white/50 mb-2">{session.label}</p>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor={`settings-${session.openKey}`} className="block text-[10px] text-white/40 mb-1">Open</label>
+                  <input id={`settings-${session.openKey}`} type="time" value={session.openVal} onChange={e => update(session.openKey, e.target.value)} className={fieldCls(session.openKey)} />
+                  {errMsg(session.openKey)}
+                </div>
+                <div>
+                  <label htmlFor={`settings-${session.closeKey}`} className="block text-[10px] text-white/40 mb-1">Close</label>
+                  <input id={`settings-${session.closeKey}`} type="time" value={session.closeVal} onChange={e => update(session.closeKey, e.target.value)} className={fieldCls(session.closeKey)} />
+                  {errMsg(session.closeKey)}
+                </div>
               </div>
             </div>
-          </div>
-          <div>
-            <p className="text-xs font-semibold text-white/50 mb-2">Sunday — Session 1 (Morning)</p>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-[10px] text-white/40 mb-1">Open</label>
-                <input type="time" value={settings.hours?.sunday?.open || "10:00"} onChange={e => update("hours.sunday.open", e.target.value)} className={inputCls} />
-              </div>
-              <div>
-                <label className="block text-[10px] text-white/40 mb-1">Close</label>
-                <input type="time" value={settings.hours?.sunday?.close || "15:00"} onChange={e => update("hours.sunday.close", e.target.value)} className={inputCls} />
-              </div>
-            </div>
-          </div>
-          <div>
-            <p className="text-xs font-semibold text-white/50 mb-2">Sunday — Session 2 (Evening)</p>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-[10px] text-white/40 mb-1">Open</label>
-                <input type="time" value={settings.hours?.sunday?.open2 || "17:30"} onChange={e => update("hours.sunday.open2", e.target.value)} className={inputCls} />
-              </div>
-              <div>
-                <label className="block text-[10px] text-white/40 mb-1">Close</label>
-                <input type="time" value={settings.hours?.sunday?.close2 || "19:00"} onChange={e => update("hours.sunday.close2", e.target.value)} className={inputCls} />
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </GlassCard>
 
